@@ -58,9 +58,9 @@ task :unrar do
     cputs "Processing: #{extracted_file_name}"
 
     # Don't overwrite extract
-    extracted_file = system("unrar -o- x '#{file}' .")
-    cputs "Removing directory #{wrapper_dir}"
-    #FileUtils.rm_rf(wrapper_dir)
+    extracted_file = system("unrar -o- -p- x '#{file}' .")
+    cputs "Removing file #{file}"
+    FileUtils.rm_rf(file)
   end
 end
 
@@ -110,6 +110,7 @@ task :date_based_shows do
     end
   end
 end
+
 def cputs(string)
   puts "\033[1m#{string}\033[0m"
 end
